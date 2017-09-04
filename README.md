@@ -10,7 +10,7 @@ Untuk bisa menggunakan boilerplate ini, lakukan setup seperti berikut:
         npm i -g gulp-cli
     </li>
     <li>
-        <strong>Install Node Module</strong>. CD ke folder projectnya, dan jalankan perintah di bawah di command prompt.<br>
+        <strong>Install Node Module</strong>. Masuk ke folder projectnya, dan jalankan perintah di bawah di command prompt.<br>
         npm i
     </li>
 </ol>
