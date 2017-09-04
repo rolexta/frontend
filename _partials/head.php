@@ -27,7 +27,7 @@
 
     <title>front-end starter kit</title>
 
-    <link rel="stylesheet" href="assets/css/main--done.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <script src="assets/js/vendor/modernizr.min.js"></script>
 </head>
 <body>

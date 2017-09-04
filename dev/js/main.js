@@ -37,49 +37,11 @@
             load(assets._objectFit).then( () => {
                 objectFitImages()
             })
-        },
-
-        headRoom() {
-            let myElement = document.querySelector('.site-header')
-            // construct an instance of Headroom, passing the element
-            let headroom  = new Headroom(myElement)
-            // initialise
-            headroom.init()
-        },
-
-        introSlide() {
-            let $slider = $('.section-intro')
-            if(!$slider.length) return;
-            Modernizr.load({
-                load    : assets._slick,
-                complete: function() {
-                    $slider.slick({
-                        prevArrow: slickPrev,
-                        nextArrow: slickNext
-                    })
-                }
-            })
-        },
-
-        mainNav() {
-            let $nav    = $('.main-nav')
-
-            function toggleNav(e) {
-                e.preventDefault()
-                if($nav.hasClass('is-active')) {
-                    $nav.removeClass('is-active')
-                } else {
-                    $nav.addClass('is-active')
-                }
-            }
-
-            $nav.off('click', '.btn-trigger', toggleNav)
-            $nav.on('click', '.btn-trigger', toggleNav)
         }
     }
 
     Promise.all([
-        load(assets._headroom)
+        // load(assets._assets)
     ]).then(() => {
         for (let fn in Site) {
             Site[fn]()

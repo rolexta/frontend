@@ -1,7 +1,7 @@
 <footer class="site-footer">
     <div class="container">
-        <div class="bzg block text-center">
-            <div class="bzg_c flex f-center" data-col="m4">
+        <div class=" block text-center">
+            <div class=" flex f-center" data-col="m4">
                 <div class="item-icon text-huge">
                     <span class="fa fa-phone"></span>
                 </div>
@@ -10,7 +10,7 @@
                     <a href="tel:+62 21 719 6878" class="is-block">+62 21 719 6878</a>
                 </div>
             </div>
-            <div class="bzg_c flex f-center" data-col="m4">
+            <div class=" flex f-center" data-col="m4">
                 <div class="item-icon text-huge">
                     <span class="fa fa-globe"></span>
                 </div>
@@ -19,7 +19,7 @@
                     <a href="tel:+62 21 719 6878" class="is-block">+62 21 719 6878</a>
                 </div>
             </div>
-            <div class="bzg_c flex f-center" data-col="m4">
+            <div class=" flex f-center" data-col="m4">
                 <div class="item-icon text-huge">
                     <span class="fa fa-map-marker"></span>
                 </div>
