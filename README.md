@@ -16,4 +16,4 @@ Untuk bisa menggunakan boilerplate ini, lakukan setup seperti berikut:
 
 4.  **Test**. Untuk memastikan proses instalasi selesai dengan benar, jalankan perintah di bawah ini:  
     **gulp watch**  
-    ![Gulp Watch](https://github.com/rolexta/frontend/raw/master/dev/img/watch.jpg)
+    ![Gulp Watch](https://github.com/rolexta/frontend/raw/master/dev/img/watch.JPG)
