@@ -8,7 +8,7 @@ Untuk bisa menggunakan boilerplate ini, lakukan setup seperti berikut:
 
 2.  **Gulp**. Setelah selesai install node, jalankan perintah di bawah ini di command prompt.  
     **npm i -g gulp-cli**  
-    ![Gulp Install](https://github.com/rolexta/frontend/dev/img/gulp.png)  
+    ![Gulp Install](https://github.com/rolexta/frontend/raw/master/dev/img/gulp.png)  
 
 3.  **Install Node Module**. Dengan comand prompt, masuk/CD ke folder projectnya, dan jalankan perintah di bawah ini di command prompt.  
     **npm i** atau **npm install**  
@@ -16,4 +16,4 @@ Untuk bisa menggunakan boilerplate ini, lakukan setup seperti berikut:
 
 4.  **Test**. Untuk memastikan proses instalasi selesai dengan benar, jalankan perintah di bawah ini:  
     **gulp watch**  
-    ![Gulp Watch](https://github.com/rolexta/frontend/dev/img/watch.jpg)
+    ![Gulp Watch](https://github.com/rolexta/frontend/raw/master/dev/img/watch.jpg)
