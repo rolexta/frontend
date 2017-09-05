@@ -4,7 +4,6 @@
 --------------------------------------------------------------------------------- */
 
 const gulp        = require('gulp')
-const del         = require('del')
 const prefixer    = require('autoprefixer')
 const beep        = require('beepbeep')
 const plugins     = require('gulp-load-plugins')()
@@ -86,26 +85,6 @@ gulp.task('stylesheet:compile', () => {
 
 
 
-/* Task: Style
---------------------------------------------------------------------------------- */
-
-gulp.task('stylesheet:compile_and_minify', () => {
-    let options = {
-        outputStyle: 'compressed'
-    }
-
-    return gulp
-        .src(`${paths.dev}sass/*.scss`)
-        .pipe(plugins.sass(options))
-        .pipe(plugins.postcss([
-            prefixer(autoprefixOpts),
-            require('postcss-object-fit-images')
-        ]))
-        .pipe(gulp.dest(`${paths.build}css`))
-})
-
-
-
 
 /* Task: Copy and minify CSS vendor
 --------------------------------------------------------------------------------- */
@@ -138,22 +117,6 @@ gulp.task('javascript:compile', () => {
         .pipe(gulp.dest(`${paths.build}js`))
 })
 
-gulp.task('javascript:compile_and_minify', () => {
-    return gulp
-        .src(`${paths.dev}js/*.js`)
-        .pipe(plugins.babel({
-            presets: ['es2015']
-        }))
-        .on('error', function (err) {
-            console.log('>>> Error', err)
-            beep(2)
-            this.emit('end')
-        })
-        .pipe(plugins.uglify())
-        .pipe(plugins.rename(renameOpts))
-        .pipe(gulp.dest(`${paths.build}js`))
-})
-
 
 
 
@@ -163,21 +126,6 @@ gulp.task('javascript:compile_and_minify', () => {
 gulp.task('javascript:copy_vendor_js', () => {
     return gulp
         .src(`${paths.dev}js/vendor/*.js`)
-        .pipe(plugins.rename(renameOpts))
-        .pipe(gulp.dest(`${paths.build}js/vendor/`))
-})
-
-
-
-
-/* Task: Minify JS
---------------------------------------------------------------------------------- */
-
-gulp.task('javascript:minify_vendor_js', () => {
-    return gulp
-        .src(`${paths.dev}js/vendor/*.js`)
-        .pipe(plugins.changed(`${paths.build}js`))
-        .pipe(plugins.uglify())
         .pipe(plugins.rename(renameOpts))
         .pipe(gulp.dest(`${paths.build}js/vendor/`))
 })
@@ -210,56 +158,6 @@ gulp.task('image:compress', () => {
 
 
 
-
-/* Task: Convert image to WebP
---------------------------------------------------------------------------------- */
-
-gulp.task('image:convert_to_webp', () => {
-    let imageFormats = [
-        `${paths.dev}img/webp/*.png`,
-        `${paths.dev}img/webp/*.jpg`
-    ]
-
-    let options = {
-        quality: 80
-    }
-
-    return gulp
-        .src(imageFormats)
-        .pipe(plugins.changed(`${paths.build}img/webp/`))
-        .pipe(plugins.webp(options))
-        .pipe(gulp.dest(`${paths.build}img/webp/`))
-})
-
-
-
-
-/* Task: Copy fonts
---------------------------------------------------------------------------------- */
-
-gulp.task('fonts', () => {
-    return gulp
-        .src(`${paths.dev}fonts/*`)
-        .pipe(plugins.changed(`${paths.build}fonts`))
-        .pipe(gulp.dest(`${paths.build}fonts`))
-})
-
-
-
-
-
-/* Task: Clean
---------------------------------------------------------------------------------- */
-
-gulp.task('clean', () => {
-    return del(paths.build).then(() => {
-        console.log('Assets directory cleaned')
-    })
-})
-
-
-
-
 /* Task: Default
 --------------------------------------------------------------------------------- */
 
@@ -268,9 +166,7 @@ gulp.task('default', [
     'stylesheet:compile',
     'javascript:compile',
     'javascript:copy_vendor_js',
-    'image:compress',
-    'image:convert_to_webp',
-    'fonts'
+    'image:compress'
 ])
 
 
@@ -292,42 +188,6 @@ gulp.task('watch', ['default'], () => {
     // Imagemin
     gulp.watch(`${paths.dev}img/*`, ['image:compress'])
 
-    // WebP
-    gulp.watch(`${paths.dev}img/webp/*`, ['image:convert_to_webp'])
-
-    // Fonts
-    gulp.watch(`${paths.dev}fonts/*`, ['fonts'])
-
     // Copy CSS
     gulp.watch(`${paths.dev}css/*`, ['stylesheet:copy_vendor_css'])
-})
-
-
-
-
-/* Task: Livereload
---------------------------------------------------------------------------------- */
-
-gulp.task('livereload', () => {
-    gulp.start('watch:html', 'watch:stylesheet', 'watch:js')
-})
-
-
-
-
-/* Task: Build
---------------------------------------------------------------------------------- */
-
-gulp.task('production', [
-    'stylesheet:compile_and_minify',
-    'stylesheet:copy_vendor_css',
-    'javascript:compile_and_minify',
-    'javascript:minify_vendor_js',
-    'image:compress',
-    'image:convert_to_webp',
-    'fonts'
-])
-
-gulp.task('build', ['clean'], () => {
-    gulp.start('production')
 })
