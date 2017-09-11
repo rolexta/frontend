@@ -58,6 +58,11 @@ $BTN_PADDING: ($space / 3) $space;
     @include btnStyle($primary, #FFF);
 }
 
+.btn--red {
+    @include btnStyle(#FF0000, #FFF)
+}
+
+//@include btnStyle("parameter warna yang diinginkan","warna text")
 
 .btn--ghost-white {
     background: transparent;
